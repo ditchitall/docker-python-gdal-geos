@@ -37,16 +37,17 @@ jobs:
         with:
           registry: ghcr.io
           username: ${{ github.actor }}
-          password: ${{ secrets.GHCR_DEPLOY_TOKEN }}
+          password: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Build and push multi-platform image with GHCR cache
-        run: |
-          export IMAGE_TAG=py${{ matrix.PYTHON_VERSION }}-${{ matrix.VARIANT }}
-          docker buildx build \
-            --platform linux/amd64,linux/arm64 \
-            --tag ${{ env.IMAGE_NAME }}:${{ github.sha }} \
-            --tag ${{ env.IMAGE_NAME }}:$IMAGE_TAG \
-            --cache-from=type=registry,ref=${{ env.IMAGE_NAME }}:buildcache \
-            --cache-to=type=registry,ref=${{ env.IMAGE_NAME }}:buildcache,mode=max \
-            --push \
-            ${{ matrix.PYTHON_VERSION }}/${{ matrix.VARIANT }}
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v6
+        with:
+          context: ${{ matrix.PYTHON_VERSION }}/${{ matrix.VARIANT }}
+          platforms: linux/amd64,linux/arm64
+          build-args: BUILDKIT_INLINE_CACHE=1
+          push: true
+          tags: |
+            ${{ env.IMAGE_NAME }}:${{ github.sha }}
+            ${{ env.IMAGE_NAME }}:py${{ matrix.PYTHON_VERSION }}-${{ matrix.VARIANT }}
+          cache-from: type=registry,ref=${{ env.IMAGE_NAME }}:py${{ matrix.PYTHON_VERSION }}-${{ matrix.VARIANT }}
+          cache-to: type=registry,ref=${{ env.IMAGE_NAME }}:py${{ matrix.PYTHON_VERSION }}-${{ matrix.VARIANT }},mode=max
