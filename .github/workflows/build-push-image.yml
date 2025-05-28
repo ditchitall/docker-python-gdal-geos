@@ -37,7 +37,7 @@ jobs:
         with:
           registry: ghcr.io
           username: ${{ github.actor }}
-          password: ${{ secrets.BASEIMAGE_BUILD_TOKEN }}
+          password: ${{ secrets.GHCR_DEPLOY_TOKEN }}
 
       - name: Build and push multi-platform image with GHCR cache
         run: |
