@@ -16,7 +16,7 @@ jobs:
     strategy:
       matrix:
         PYTHON_VERSION: [3.12]
-        VARIANT: [lambda]  # e.g. could add "slim", "runtime" later
+        VARIANT: [lambda, slim-bookworm]
 
     permissions:
       contents: read
