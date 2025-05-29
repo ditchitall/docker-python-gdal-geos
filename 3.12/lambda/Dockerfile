@@ -5,11 +5,7 @@ WORKDIR /var/task
 
 ENV LD_LIBRARY_PATH="/usr/local/lib64:$LD_LIBRARY_PATH" \
     GDAL_LIBRARY_PATH=/usr/local/lib64/libgdal.so \
-    GEOS_LIBRARY_PATH=/usr/local/lib64/libgeos_c.so \
-    GEOIP2FAST_PATH=/opt/ldr/geoip2fast
-
-RUN mkdir -p ${GEOIP2FAST_PATH} \
-    && curl -L -o "${GEOIP2FAST_PATH}/geoip2fast.dat.gz" https://github.com/rabuchaim/geoip2fast/releases/latest/download/geoip2fast.dat.gz
+    GEOS_LIBRARY_PATH=/usr/local/lib64/libgeos_c.so
 
 # -------------------------------------------------------------------------------------
 
