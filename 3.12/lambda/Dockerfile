@@ -68,7 +68,7 @@ FROM base
 RUN dnf install -y \
     libtiff \
     zlib \
-    sqlite-libs \
+    sqlite \
     libcurl \
     && dnf clean all
 
