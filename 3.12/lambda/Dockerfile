@@ -65,11 +65,10 @@ RUN wget https://github.com/OSGeo/gdal/releases/download/v3.10.0/gdal-3.10.0.tar
 
 FROM base
 
-RUN dnf --exclude=libcurl-minimal install -y \
+RUN dnf install -y \
     libtiff \
     zlib \
     sqlite \
-    libcurl \
     && dnf clean all
 
 # Copy compiled binaries from builder
