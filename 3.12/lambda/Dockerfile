@@ -70,6 +70,7 @@ RUN dnf install -y \
     zlib \
     sqlite \
     libcurl \
+    --exclude=libcurl-minimal \
     && dnf clean all
 
 # Copy compiled binaries from builder
