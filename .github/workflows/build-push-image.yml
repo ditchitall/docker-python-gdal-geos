@@ -50,4 +50,4 @@ jobs:
             ${{ env.IMAGE_NAME }}:${{ github.sha }}
             ${{ env.IMAGE_NAME }}:py${{ matrix.PYTHON_VERSION }}-${{ matrix.VARIANT }}
           cache-from: type=registry,ref=${{ env.IMAGE_NAME }}:py${{ matrix.PYTHON_VERSION }}-${{ matrix.VARIANT }}
-          cache-to: type=registry,ref=${{ env.IMAGE_NAME }}:py${{ matrix.PYTHON_VERSION }}-${{ matrix.VARIANT }},mode=max
+          cache-to: type=registry,ref=${{ env.IMAGE_NAME }}:py${{ matrix.PYTHON_VERSION }}-${{ matrix.VARIANT }}-buildcache,mode=max
