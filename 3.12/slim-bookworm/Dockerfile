@@ -48,6 +48,15 @@ ENV PATH="${GDAL_INSTALL_PREFIX}/bin:$PATH" \
     PYTHONPATH="${GDAL_INSTALL_PREFIX}/lib/python3.12/site-packages:$PYTHONPATH" \
     GDAL_LIBRARY_PATH="${GDAL_INSTALL_PREFIX}/lib/libgdal.so"
 
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    ca-certificates \
+    gnupg \
+    apt-transport-https \
+    && rm -rf /var/lib/apt/lists/*
+
+RUN mkdir -m 0755 -p /etc/apt/keyrings && \
+    curl -fsSL https://ftp-master.debian.org/keys/archive-key-12.asc | gpg --dearmor -o /etc/apt/keyrings/debian-archive-keyring.gpg
+
 #RUN python -c "from osgeo import gdal; print(gdal.__file__)"
 
 CMD ["python", "-V", "&&", "pip", "-V", "&&", "gdalinfo", "--version"]
