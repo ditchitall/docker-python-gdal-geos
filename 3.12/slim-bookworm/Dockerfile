@@ -51,6 +51,7 @@ ENV PATH="${GDAL_INSTALL_PREFIX}/bin:$PATH" \
 RUN apt-get update && apt-get install -y --no-install-recommends \
     ca-certificates \
     gnupg \
+    curl \
     apt-transport-https \
     && rm -rf /var/lib/apt/lists/*
 
