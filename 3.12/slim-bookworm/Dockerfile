@@ -81,6 +81,11 @@ ENV LD_LIBRARY_PATH="/usr/local/lib:${LD_LIBRARY_PATH:-}" \
     GEOS_VERSION=${GEOS_VERSION} \
     GDAL_VERSION=${GDAL_VERSION}
 
+LABEL \
+  gdal.version="${GDAL_VERSION}" \
+  geos.version="${GEOS_VERSION}" \
+  proj.version="${PROJ_VERSION}"
+
 # Test versions of installed libraries (verifies correct installation)
 RUN set -ex  \
     && test $(proj 2>&1 | head -n 1 | grep -oP 'Rel\.\s+\K[0-9.]+') = "${PROJ_VERSION}" \
