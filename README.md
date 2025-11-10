@@ -31,4 +31,4 @@ Docker images bundling **Python (3.12 / 3.13 / 3.14)** with **GDAL 3.10.0**, **G
 ### Run interactively
 
 ```bash
-docker run --rm -it ditchitall/python-gdal-geos:py3.14-slim-bookworm bash
+docker run --rm -it ghcr.io/ditchitall/python-gdal-geos:py3.14-slim-bookworm bash
