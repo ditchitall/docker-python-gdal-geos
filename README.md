@@ -1,12 +1,12 @@
 # docker-python-gdal-geos
 
-Docker images bundling **Python (3.12 / 3.13)** with **GDAL 3.10.0**, **GEOS 3.11.5**, and **PROJ 9.5.1** — built from source for robust geospatial workloads.
+Docker images bundling **Python (3.12 / 3.13 / 3.14)** with **GDAL 3.10.0**, **GEOS 3.11.5**, and **PROJ 9.5.1** — built from source for robust geospatial workloads.
 
 ---
 
 ## ✅ Features
 
-- Currently only Python 3.12 and 3.13 are supported
+- Currently only Python 3.12, 3.13 and 3.14 are supported
 - GDAL 3.10.0, GEOS 3.11.5, PROJ 9.5.1
 - Tagged variants for Lambda and Slim Debian
 - Lightweight builds with clean dependencies
@@ -15,12 +15,14 @@ Docker images bundling **Python (3.12 / 3.13)** with **GDAL 3.10.0**, **GEOS 3.1
 
 ## 📦 Tags
 
-| Tag                          | Base Image                          |
-|-----------------------------|--------------------------------------|
-| `py3.12-lambda`             | `public.ecr.aws/lambda/python:3.12` |
-| `py3.13-lambda`             | `public.ecr.aws/lambda/python:3.13` |
-| `py3.12-slim-bookworm`     | `python:3.12-slim-bookworm`         |
-| `py3.13-slim-bookworm`     | `python:3.13-slim-bookworm`         |
+| Tag                    | Base Image                          |
+|------------------------|-------------------------------------|
+| `py3.12-lambda`        | `public.ecr.aws/lambda/python:3.12` |
+| `py3.13-lambda`        | `public.ecr.aws/lambda/python:3.13` |
+| `py3.14-lambda`        | `public.ecr.aws/lambda/python:3.14` |
+| `py3.12-slim-bookworm` | `python:3.12-slim-bookworm`         |
+| `py3.13-slim-bookworm` | `python:3.13-slim-bookworm`         |
+| `py3.14-slim-bookworm` | `python:3.14-slim-bookworm`         |
 
 ---
 
@@ -29,4 +31,4 @@ Docker images bundling **Python (3.12 / 3.13)** with **GDAL 3.10.0**, **GEOS 3.1
 ### Run interactively
 
 ```bash
-docker run --rm -it ditchitall/python-gdal-geos:py3.13-slim-bookworm bash
+docker run --rm -it ditchitall/python-gdal-geos:py3.14-slim-bookworm bash
